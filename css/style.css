@@ -1,0 +1,17 @@
+
+table.equipe img, div.equipe img {
+	height: 40px;
+}
+
+#ageHeader:hver , #nomHeader:hver  {
+cursor: pointer;
+}
+
+.oldest {
+	color: orange;
+	font-weight: bold;
+}
+
+#formPlayer {
+	display: none;
+}
