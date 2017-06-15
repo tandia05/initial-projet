@@ -8,5 +8,6 @@ session_start()
 	<title><?php echo $tittle ?></title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	
 </head>
 <body>

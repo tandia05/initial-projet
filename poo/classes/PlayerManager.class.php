@@ -55,7 +55,7 @@ class PlayerManager
 		//avan l'envoi au client
 		for ($i=0; $i < sizeof($results); $i++) 
 		{ 
-			$results[$i]['prenom'] = ucfirst($results[$i]['prenom']); //premiere lettre en majiscule
+			$results[$i]['nom'] = ucfirst($results[$i]['nom']); //premiere lettre en majiscule
 			$results[$i]['nom'] = strtoupper($results[$i]['nom']);//tout en majiscule
 
 			if($results[$i]['equipe'] == 0)

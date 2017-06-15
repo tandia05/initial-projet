@@ -21,30 +21,39 @@ include '../includes/equipe.inc.php';
 
     <div ng-controller="mainCtrl">
         
-       <!--  <h2>{{message}}</h2> -->
+           <!--  <h2>{{message}}</h2> -->
 
-        <ul style="display: none;">
-            <li ng-repeat="joueur in joueurs">
-            {{joueur.name}} ({{joueur.age}} ans)
-            </li>
-        </ul>
+           <!-- checbox pour affichage du formulaire -->
+           <input type="checkbox" ng-model="visibleForm">
+           <span ng-if="!visibleForm">Afficher</span>
+            <span ng-if="visibleForm">Masquer</span> le formulaire
 
-            <!-- Formulaie d'ajout ,mis a jour d'un joueur -->
+            <ul style="display: none;">
+                <li ng-repeat="joueur in joueurs">
+                {{joueur.name}} ({{joueur.age}} ans)
+                </li>
+            </ul>
 
-            <div class="well">
-                <input ng-model="team.nom" type="text" name="" placeholder="nom">
-                <input ng-model="team.prenom" type="text" name="" placeholder="prenom">
-                <input ng-model="team.age" type="text" name="" placeholder="age">
+                <!-- Formulaie d'ajout ,mis a jour d'un joueur -->
+
+            <div ng-show="visibleForm" class="well">
+                <input ng-model="player.nom" type="text" placeholder="nom">
+                <input ng-model="player.prenom" type="text" placeholder="prenom">
+                <input ng-model="player.age" type="text" placeholder="age">
 
                 <label>Numero</label>
-                <select ng-model="team.numero_maillot">
+                <select ng-model="player.numero_maillot">
                     <option  ng-repeat="n in maillot_range">{{n}}</option>
                 </select>
 
                 <label>Equipe :</label>     
                  <?php echo selectFormat(getTeams());?>
 
-                <button ng-click="savePlayer()" class="btn btn-primary btn-xs">Enreistrer</button>
+                <button ng-click="savePlayer()" class="btn btn-primary btn-xs">
+                <span ng-if="!updateMode">Enregistre</span>
+                <span ng-if="updateMode">Mettre à jour</span>
+                </button>
+                 <button ng-click="cleanForm()" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span>Annuler</button>
                 <span id="message"></span>
 
             </div>
@@ -53,6 +62,7 @@ include '../includes/equipe.inc.php';
         <div>  <!-- ng-model surveille la valeur d'un input et la range dans le scope -->
             <input ng-model="search"   type="text"  placeholder="recherche">
             <select ng-model="selectedTeam">
+            <option value=""> Toutes les equipes</option>
               <option ng-repeat ='team in teams'>{{team.name}}</option>
             </select>
         </div>
@@ -73,6 +83,7 @@ include '../includes/equipe.inc.php';
 
 
                 <th>Action</th>
+                <th>Action</th>
             </tr>
             <tr ng-repeat="g in filteredGiocatori=(giocatori |
                             filter:search |
@@ -90,7 +101,10 @@ include '../includes/equipe.inc.php';
                 </td> -->
 
                 <td><img ng-src="../{{g.equipe_logo}}"></td> 
-                <td><button ng-click="deletePlayer()" class="btn btn-danger">Supprimer</button></td>
+                <td><button ng-click="editPlayer()" class="btn btn-default">
+                <span class="glyphicon glyphicon-pencil"></span></button></td>
+                <td><button ng-click="deletePlayer()" class="btn btn-danger">
+                <span class="glyphicon glyphicon-trash"></span></button></td>
             </tr>
         </table>
 

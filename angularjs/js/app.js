@@ -8,6 +8,12 @@ app.controller('mainCtrl', function($scope, $http) {
 
     var url_server = "http://localhost/PROJECTS/PHP/poo/ajax.php";
 
+    //
+
+    $scope.updateMode = false; //mode d'insertion par defaut
+
+    $scope.visibleForm = false;
+
     $scope.nb_click = 0;
     $scope.orderKey = "age";
     $scope.reverse = false; //  par defaut tri croissant(pas d'inversion)
@@ -52,6 +58,18 @@ app.controller('mainCtrl', function($scope, $http) {
 
    }
 
+   function initPlayer()
+   {
+        // initialisaion facultatif
+        $scope.player = {
+        nom: '',
+        prenom: '',
+        age: '',
+        numero_maillot: 1,
+        equipe: "0"
+        };
+   }
+
     $scope.teams = equipes; // nous exposons les joueurs, ils sont
     // accessibles à la vue
 
@@ -64,11 +82,22 @@ app.controller('mainCtrl', function($scope, $http) {
     $scope.savePlayer = function()
     {
         var url = url_server;
-        $http.post(url,{team:$scope.team}).then(function(res)
+
+        $http.post(url,{player:$scope.player}).then(function(res)
         {
+            console.log(res.data);
              //rechargement des joueurs
            getPlayers();
+           // effacer le champ du formulaire
+           $scope.player = {};
         });    
+    }
+
+    $scope.editPlayer = function()
+    {
+       $scope.player = this.g;
+       $scope.updateMode = true;
+       $scope.visibleForm = true;
     }
 
     $scope.deletePlayer = function()
@@ -80,8 +109,15 @@ app.controller('mainCtrl', function($scope, $http) {
             console.log(res.data);
              //rechargement des données
            getPlayers();
+
         });    
     };
+
+    $scope.cleanForm = function()
+    {
+        initPlayer();
+        $scopr.updateMode = false;
+    }
 
     // chargement des joueurs
     getPlayers();
@@ -89,4 +125,13 @@ app.controller('mainCtrl', function($scope, $http) {
     // construction  de la liste des numeros maillot
     buildNumeroListe();
    /* console.log( $scope.maillot_range);*/
+
+   //initialisation du formulaire
+   initPlayer();
+
+
+
+   //$scope.player = {prenom:'Rober'  nom: 'PIRES'};
+
+
 });

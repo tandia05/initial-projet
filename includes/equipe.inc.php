@@ -3,7 +3,7 @@ include_once "connexion_db.php";
 function getTeams()
 {
 	$db = connect();
-	$query = $db->prepare('SELECT * FROM equipe');
+	$query = $db->prepare('SELECT * FROM equipe ORDER BY equipe.nom  ASC');
 	$query->execute();
 	return $query->fetchAll();
 }
@@ -48,7 +48,7 @@ function selectFormat($teams)
 {
 	//ng-model permet a ahular de  de surveiller 
 	//la valeur selectionné dans le menu de selection
-	$output = '<select ng-model="team.equipe" name="equipe">';
+	$output = '<select ng-model="player.equipe" name="equipe">';
 	$output .= '<option value="0"> Sans equipe</option>';
 	foreach ($teams as $team ) 
 	{
