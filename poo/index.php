@@ -1,6 +1,7 @@
 <?php
 include 'classes/Client.class.php';
 include 'classes/Equipe.class.php';
+include 'classes/Footballer.class.php';
 
 class Joueur {
     public $nom = 'Zidane';
@@ -136,4 +137,17 @@ $equipe1->joueContre('Madrid', 'Cardiff', '03/06/2017');
     echo '<br>' . $alban->nom .' '. $alban->getNbCb();
 
 
+
+//** Test du principe d'heritage en POO
+    $data = [
+        'nom'                =>  'verrati',
+        'prenom'            =>  'marco',
+        'age'                =>  23,
+        'numero_maillot'    =>  6,
+        'equipe'             =>  3,
+    ];
+    $f = new Footballer($data);
+    echo  $f->nom;
+    $f->setSalaire(1200);
+    echo '<br>' .'<br>'. $f->nom . 'gagne' . $f->getSalaire() . 'euro par minute';
 ?>

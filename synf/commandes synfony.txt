@@ -1,0 +1,5 @@
+Demarer le server synfony:
+php bin/console server:run
+
+https://www.google.fr/?gfe_rd=cr&ei=xL1DWeepOcfUXtjZhtAG#q=%3Cdiv++class%3D%22modal-body+row%22+before
+

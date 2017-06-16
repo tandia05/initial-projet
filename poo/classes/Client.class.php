@@ -58,7 +58,7 @@ class Client
     // mutatteu (setteur)
     //modifier une propiete via une methode
     //permet d'effevtuer un controle avant de modifier
-    Puvlic function setNbCb($value)
+    Public function setNbCb($value)
     {
         if ($this->isCbOk($value))
         {
