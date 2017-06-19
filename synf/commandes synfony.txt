@@ -1,5 +1,38 @@
+chemin pour variable d'environnement:
+C:\wamp64\bin\php\php5.6.25
+
 Demarer le server synfony:
 php bin/console server:run
+
+******************************************
+création d'une table e base:
+php bin/console doctrine:generate:entity
+AppBundle:nom de la bable puis entrer
+AppBundle:Team
+
+*************************************************
+
+Visualiser la cmde qui va etre executer en base:
+php bin/console doctrine:schema:update --dump-sql
+
+*********************************************************
+
+creation de des tables de la base:
+php bin/console doctrine:schema:update --force
+
+*****************************************************************
+
+update de la base:
+php bin/console doctrine:schema:update --force
+
+**************************************************************
+generer la CRUD en ligne de commande
+php bin/console generate:doctrine:crud
+AppBundle:Team
+yes
+prefixe exemple team
+
+
 
 https://www.google.fr/?gfe_rd=cr&ei=xL1DWeepOcfUXtjZhtAG#q=%3Cdiv++class%3D%22modal-body+row%22+before
 
