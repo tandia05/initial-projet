@@ -22,7 +22,7 @@ php bin/console doctrine:schema:update --force
 
 *****************************************************************
 
-update de la base:
+update de la base: ajout ou suppression des lignes
 php bin/console doctrine:schema:update --force
 
 **************************************************************
@@ -31,6 +31,11 @@ php bin/console generate:doctrine:crud
 AppBundle:Team
 yes
 prefixe exemple team
+
+*************************************************
+Chemin pour copier le ficjier certt:
+C:\wamp64\bin\php\php5.6.25
+https://curl.haxx.se/ca/cacert.pem
 
 
 
