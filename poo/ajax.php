@@ -1,13 +1,13 @@
 <?php
 include 'classes/PlayerManager.class.php';
 include_once 'classes/Player.class.php';
-// Poin d'entrée (entry point ) des requetes ajax envoyées par la client
+// Point d'entrée (entry point ) des requetes ajax envoyées par la client
 
 $req_method = $_SERVER['REQUEST_METHOD']; // renvoi le nom de la requete HTTP 
 //utilisé par la requete du client
 
 
-	if($req_method == 'GET') //requete e GET
+	if($req_method == 'GET') //requete en GET
 	{
 			switch ($_GET['action']) 
 			{

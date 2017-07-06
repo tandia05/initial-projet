@@ -32,7 +32,7 @@ $animaux = ["lapin","lion","chat","puma","zebre"];
 $width = 300;
 $i = 1;
 foreach ($animaux as $animal ) {
-	echo "<div><img  style =\"width: ". $width . "px; border:2px red solid \" src=img/" . $animal .  " . jpg>";
+	echo '<div><img  style ="width: '. $width . 'px; border:2px red solid " src="img/' . $animal .  '.jpg">';
 }
 
 echo "<script src=\"js/script.js\"></script>";

@@ -4,18 +4,21 @@
 // arg2 : tableau des dépendances (autres modules chargés)
 var app = angular.module('introApp', []);
 
-app.controller('mainCtrl', function($scope, $http) {
+app.controller('mainCtrl', function($scope, $http) 
+{
 
     var url_server = "http://localhost/PROJECTS/PHP/poo/ajax.php";
 
-    //
+    //$scope.updateMode est un indicateur permettant de savoir
+    // si le formulaire doit être géré en mode insertion ou bien
+    // en mode mise à jour
 
     $scope.updateMode = false; //mode d'insertion par defaut
 
-    $scope.visibleForm = false;
+    $scope.visibleForm = false; // formulaire masqué par défaut
 
     $scope.nb_click = 0;
-    $scope.orderKey = "age";
+    $scope.orderKey = "age"; // critère de tri initial
     $scope.reverse = false; //  par defaut tri croissant(pas d'inversion)
     $scope.message = "coucou"; // ajout d'une propriété "message"
     // à l'objet $scope (espace d'échange entre
@@ -23,7 +26,7 @@ app.controller('mainCtrl', function($scope, $http) {
     $scope.maillot_range = [];// tableau vide pour alimenter le menu de select
     //  dans le ormulaire d'ajout       allant de 1 à 999
 
-    // variable players non accessible à la vue
+    // variable equipes non accessible à la vue
     var equipes = [
         {name: 'france'},
         {name: 'strasbourg'},
@@ -32,6 +35,7 @@ app.controller('mainCtrl', function($scope, $http) {
 
     function getPlayers()
     {
+     // requête ajax via le service $http
         var url = url_server + "?action=list";
         $http.get(url).then(function(res)
         {
